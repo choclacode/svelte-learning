@@ -1,30 +1,22 @@
 <script>
-	export let name;
+  import Layout from './components/layout/Layout.svelte';
+  import Navbar from './components/layout/Navbar.svelte';
+  import Poll from './components/poll/Poll.svelte';
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<Layout>
+  <Navbar />
+  <Poll />
+  <!-- <Poll {activeItem} {polls}
+    on:addPoll={({ detail }) => {
+      polls = [...polls, detail];
+      activeItem = 'Current Polls';
+    }}
+    on:vote={({ detail: { choice, id } }) => {
+      const copiedPolls = [...polls];
+      const upvotedPoll = copiedPolls.find(poll => poll.id === id);
+      upvotedPoll.choices[choice].votes++;
+      polls = copiedPolls;
+    }}
+  /> -->
+</Layout>
